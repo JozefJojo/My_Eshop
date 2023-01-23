@@ -1,0 +1,52 @@
+CREATE TABLE `User` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `picture` text,
+  `email` text NOT NULL,
+  `city` text,
+  `address` text,
+  `role` ENUM ('USER', 'ADMIN')
+);
+CREATE TABLE `Producer` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` text NOT NULL
+);
+CREATE TABLE `Product` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `title` text NOT NULL,
+  `description` text,
+  `thumbnail` text,
+  `categoryId` int,
+  `price` float NOT NULL,
+  `producerId` int
+);
+CREATE TABLE `Order` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `totalCost` float NOT NULL,
+  `deliveryAddress` text NOT NULL,
+  `created` text,
+  `status` text,
+  `userId` int
+);
+CREATE TABLE `OrderToOrderline` (
+  `orderId` int,
+  `orderlineId` int
+);
+CREATE TABLE `Orderline` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `productId` int,
+  `amount` int,
+  `totalPrice` float,
+  `userId` int
+);
+CREATE TABLE `Category` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` text NOT NULL
+);
+ALTER TABLE `Product` ADD FOREIGN KEY (`categoryId`) REFERENCES `Category` (`id`);
+ALTER TABLE `Product` ADD FOREIGN KEY (`producerId`) REFERENCES `Producer` (`id`);
+ALTER TABLE `Order` ADD FOREIGN KEY (`userId`) REFERENCES `User` (`id`);
+ALTER TABLE `OrderToOrderline` ADD FOREIGN KEY (`orderId`) REFERENCES `Order` (`id`);
+ALTER TABLE `OrderToOrderline` ADD FOREIGN KEY (`orderlineId`) REFERENCES `Orderline` (`id`);
+ALTER TABLE `Orderline` ADD FOREIGN KEY (`productId`) REFERENCES `Product` (`id`);
+ALTER TABLE `Orderline` ADD FOREIGN KEY (`userId`) REFERENCES `User` (`id`);
