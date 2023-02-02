@@ -1,11 +1,11 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -29,3 +29,72 @@ code {
 }
 
 
+
+
+/* new */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dFlex{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+body{
+  width: 100%;
+  background-color: gray;
+}
+
+.mb_80 {
+  margin-bottom: 30px;
+}
+
+.product_list_container{
+  display: block;
+  /* max-width: 1140px; */
+  /* padding: 50px 100px 0 100px; */
+  width: 100%;
+  margin:50px auto;
+  @media(max-width:80%){
+    padding:50px 0 0 0;
+  }
+  @media(max-width:768px){
+    padding:50px 20px 0 20px;
+  }
+}
+
+.cta_group{
+  margin: auto;
+}
+
+  .button_act{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    border: 2px solid blue;
+    border-radius: 20px;
+    margin:20px 0;
+    text-transform:uppercase;
+    font-size: 14px;
+    color: blue;
+    font-weight: bold;
+    transition:all .3s ease-in-out;
+  }
+
+
+.row :hover{
+ border-color: blue;
+ color:blue;
+}
+
+.row :hover .button_act {
+  background-color:blue;
+  color:white
+}

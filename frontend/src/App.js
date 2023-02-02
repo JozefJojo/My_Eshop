@@ -10,12 +10,21 @@ function App() {
     <div className="App">
       <BrowserRouter>
           <NavigationBar/>
-          <Routes>
+          {/* <Routes>
             <Route path='/' element = {<Home/>}></Route>
 
-          </Routes>
+          </Routes> */}
+{/* new */}
+          <div className='product_list_container'>
+            <div className='container'>
+              <Home/>
+            </div> 
+
+
+          </div>
+
+
       </BrowserRouter>
-      
     </div>
   );
 }
