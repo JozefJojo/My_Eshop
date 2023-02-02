@@ -56,14 +56,18 @@ const Home = () =>{
                         </div>
                     </div>
                 </div>
+            
             )          
         })
     }
 
     return (
-            <div className="row">{renderProducts()}</div>
+        <div className='product_list_container'>
+            <div className='container'>
+                <div className="row">{renderProducts()}</div>
+            </div>
+        </div>
         )
-
 }
 
 export default Home
