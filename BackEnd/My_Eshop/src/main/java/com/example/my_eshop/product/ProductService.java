@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,5 +16,10 @@ public class ProductService implements IProductService {
     public List<Product> findAllProduct() {
         List<Product> products = productRepository.findAll();
         return products;
+    }
+
+    @Override
+    public Optional<Product> findProductById(Integer id) {
+        return productRepository.findById(id);
     }
 }

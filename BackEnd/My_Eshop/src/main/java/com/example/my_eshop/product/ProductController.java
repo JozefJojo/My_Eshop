@@ -1,12 +1,10 @@
 package com.example.my_eshop.product;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,4 +16,11 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getProducts() {return productService.findAllProduct();}
+
+    @GetMapping("/{id}")
+    public Optional<Product> getProductById(@PathVariable (value = "id") Integer id){
+        return productService.findProductById(id);
+    }
+
+
 }
