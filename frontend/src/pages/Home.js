@@ -1,10 +1,12 @@
 import React, {useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import ProductService from '../services/ProductService';
 
 
 const Home = () =>{
 
     const [products, setProducts] = useState([])
+    const navigate = useNavigate()
 
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -38,7 +40,7 @@ const Home = () =>{
         return products.map ((product) => {
             return( 
                 <div className ="col-12 col-sm-6 col-lg-4 mb_80" key={product.id}  >
-                    <div className='card'>
+                    <div className='card'  onClick={() => navigate(`/products/${product.id}`)}>
                         <div className='card_img'>
                             <img src={product.thumbnail}  style={{width: "150px", height: "150px"}}/>
                         </div>
