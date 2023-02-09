@@ -2,8 +2,10 @@ import React from "react";
 import { Button} from "react-bootstrap"
 
 const NavigationBar = () => {
- 
-    return (
+
+
+
+  return (
         <header className='navigation-bar'>
 
             <h1>
@@ -13,7 +15,7 @@ const NavigationBar = () => {
 <Button
             // onClick={openCart}
             style={{ width: "3rem", height: "3rem", position: "absolute" , left: "90%" }}
-            variant="outline-primary"
+            variant="outline-light"
             className="rounded-circle"
           >
             <svg
@@ -39,12 +41,6 @@ const NavigationBar = () => {
               {/* {cartQuantity} */} 5
             </div>
           </Button>
-
-
-
-
-
-
 
 
         </header>
