@@ -1,7 +1,6 @@
 import React, {useEffect, useState } from 'react';
 import ProductService from '../services/ProductService';
 import {useParams} from 'react-router-dom';
-import { BsPrefixComponent } from 'react-bootstrap/esm/helpers';
 import Button from 'react-bootstrap/Button';
 
 const Product = () => {
@@ -55,13 +54,6 @@ const Product = () => {
                             </div>
                         )}
                     </div> 
-
-
-                                <div>dalsie zmeny  a dalsie  a dalsie</div>
-                                <div> dnes sa mi nechce nic robit</div>
-
-
-
 
 
 

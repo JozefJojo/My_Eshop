@@ -1,9 +1,14 @@
 import React from "react";
 import { Button} from "react-bootstrap"
+import { useNavigate } from "react-router-dom";
 
 const NavigationBar = () => {
 
+  const navigate = useNavigate();
 
+  function openCart(){
+    navigate("/cart")
+  }
 
   return (
         <header className='navigation-bar'>
@@ -13,7 +18,7 @@ const NavigationBar = () => {
             </h1>
     
 <Button
-            // onClick={openCart}
+            onClick={openCart}
             style={{ width: "3rem", height: "3rem", position: "absolute" , left: "90%" }}
             variant="outline-light"
             className="rounded-circle"
@@ -40,7 +45,7 @@ const NavigationBar = () => {
             >
               {/* {cartQuantity} */} 5
             </div>
-          </Button>
+</Button>
 
 
         </header>
