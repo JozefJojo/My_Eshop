@@ -57,8 +57,8 @@ const Product = () => {
                     </div> 
 
 
-
-
+                                <div>dalsie zmeny  a dalsie  a dalsie</div>
+                                <div> dnes sa mi nechce nic robit</div>
 
 
 
