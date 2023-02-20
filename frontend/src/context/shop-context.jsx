@@ -6,18 +6,19 @@ import ProductService from '../services/ProductService';
 
 export const ShopContext = createContext (null);
 
-const getDefaultCart = () => {
-    let cart = {}
-    for (let i=1; i < ProductService.length + 1;i++){ 
-        cart[i] = 0
-    }
-    return cart;
-}
+// const getDefaultCart = () => {
+//     let cart = {}
+//     for (let i=1; i < ProductService.length + 1;i++){ 
+//         cart[i] = 0
+//     }
+//     return cart;
+// }
 
 export const ShopContextProvider = (props) => {
 
     const [products, setProducts] = useState([])
-    const amount = products.length;
+    // const amount = products.length ;
+    const amount = products.length || 10; 
 
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -27,8 +28,13 @@ export const ShopContextProvider = (props) => {
         getProductsAsync()
     },[])
 
-    console.log (products)
-    console.log (amount)
+    const getDefaultCart = () => {
+        let cart = {}
+        for (let i=1; i < amount + 1;i++){ 
+            cart[i] = 0
+        }
+        return cart;
+    }
 
 
     const [cartItems, setCartItems]=useState(getDefaultCart());
