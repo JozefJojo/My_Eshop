@@ -6,18 +6,12 @@ import ProductService from '../services/ProductService';
 
 export const ShopContext = createContext (null);
 
-const getDefaultCart = () => {
-    let cart = {}
-    for (let i=1; i < ProductService.length + 1;i++){ 
-        cart[i] = 0
-    }
-    return cart;
-}
+
 
 export const ShopContextProvider = (props) => {
 
     const [products, setProducts] = useState([])
-    const amount = products.length;
+    const amountOfProducts = products.length || 10;
 
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -28,14 +22,40 @@ export const ShopContextProvider = (props) => {
     },[])
 
     console.log (products)
-    console.log (amount)
+    console.log (amountOfProducts)
+
+    const getDefaultCart = () => {
+        let cart = {}
+        for (let i=1; i < amountOfProducts + 1;i++){ 
+            cart[i] = 0
+        }
+        return cart;
+    }
+
+    console.log (getDefaultCart())
 
 
     const [cartItems, setCartItems]=useState(getDefaultCart());
     
     const addToCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        // setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        setCartItems((prev) => {
+            const currentValue = prev[itemId];
+            if (typeof currentValue !== 'undefined' && !isNaN(currentValue)) {
+              return { ...prev, [itemId]: currentValue + 1 };
+            } else {
+              // inak vrátiť pôvodný stav
+              console.log("predosly stav je nedefinovany")
+              return prev;
+            }
+          });
       };
+
+
+     
+
+
+
     
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
