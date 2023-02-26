@@ -1,17 +1,15 @@
 import React, { createContext , useEffect, useState } from "react";
-
 import ProductService from '../services/ProductService';
-
 
 
 export const ShopContext = createContext (null);
 
 
-
 export const ShopContextProvider = (props) => {
 
     const [products, setProducts] = useState([])
-    const amountOfProducts = products.length || 10;
+    // const amountOfProducts = products.length || 10;
+    const amountOfProducts = products.length ;
 
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -33,39 +31,32 @@ export const ShopContextProvider = (props) => {
     }
 
     console.log (getDefaultCart())
-
-
+   
     const [cartItems, setCartItems]=useState(getDefaultCart());
-    
+
     const addToCart = (itemId) => {
         // setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         setCartItems((prev) => {
             const currentValue = prev[itemId];
+            console.log(itemId) ;
+            console.log (currentValue);
             if (typeof currentValue !== 'undefined' && !isNaN(currentValue)) {
               return { ...prev, [itemId]: currentValue + 1 };
             } else {
-              // inak vrátiť pôvodný stav
               console.log("predosly stav je nedefinovany")
-              return prev;
+            return { ...prev, [itemId]: 1 };
             }
           });
       };
-
-
-     
-
-
-
+  
     
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
       };
-
       console.log(cartItems);
-
+      
     const contextValue = { cartItems , addToCart , removeFromCart };
-    
-    
+      
     return (
     <ShopContext.Provider value = {contextValue}>
         {props.children}
