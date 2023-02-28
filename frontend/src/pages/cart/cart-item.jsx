@@ -4,9 +4,14 @@ export const CartItem = (props) => {
     const {id, thumbnail,title,price} = props.data;
     return(
         <div className='cartItem'>
-             <img src={thumbnail}  style={{width: "150px", height: "150px"}}/>
-             <div>{title.substring(0, 15)}</div>
-             <div>{price} ,- EUR</div>
+            <div>
+                <img src={thumbnail}  />
+                <p style={{ fontSize: '20px', fontWeight: 'bold' }}>
+                    <b>{title.substring(0, 15)}</b>
+                </p>
+            </div>
+             <p> Amount {id} </p>
+             <p>{price} ,- EUR</p>
         </div>
     )
 }

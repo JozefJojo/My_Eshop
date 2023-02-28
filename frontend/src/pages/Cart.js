@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState } from 'react';
 import ProductService from '../services/ProductService';
 import { ShopContext } from '../context/shop-context';
 import {CartItem}  from './cart/cart-item';
+import "./cart/cart.css";
 
 const Cart = () =>{
 
