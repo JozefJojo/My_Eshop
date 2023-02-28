@@ -19,31 +19,30 @@ export const ShopContextProvider = (props) => {
         getProductsAsync()
     },[])
 
-    console.log (products)
-    console.log (amountOfProducts)
+    // console.log (products)
+    // console.log (amountOfProducts)
 
-    const getDefaultCart = () => {
-        let cart = {}
-        for (let i=1; i < amountOfProducts + 1;i++){ 
-            cart[i] = 0
-        }
-        return cart;
-    }
+    // const getDefaultCart = () => {
+    //     let cart = {}
+    //     for (let i=1; i < amountOfProducts + 1;i++){ 
+    //         cart[i] = 0
+    //     }
+    //     return cart;
+    // }
 
-    console.log (getDefaultCart())
-   
-    const [cartItems, setCartItems]=useState(getDefaultCart());
+    // const [cartItems, setCartItems]=useState(getDefaultCart());
+    const [cartItems, setCartItems]=useState([]);
 
     const addToCart = (itemId) => {
         // setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         setCartItems((prev) => {
             const currentValue = prev[itemId];
-            console.log(itemId) ;
-            console.log (currentValue);
+            // console.log(itemId) ;
+            // console.log (currentValue);
             if (typeof currentValue !== 'undefined' && !isNaN(currentValue)) {
               return { ...prev, [itemId]: currentValue + 1 };
             } else {
-              console.log("predosly stav je nedefinovany")
+              // console.log("predosly stav je nedefinovany")
             return { ...prev, [itemId]: 1 };
             }
           });

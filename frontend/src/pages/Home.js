@@ -6,8 +6,7 @@ import { ShopContext } from '../context/shop-context';
 
 const Home = () =>{
 
-    const { addToCart } = useContext(ShopContext);
-
+    const { addToCart, cartItems } = useContext(ShopContext);
     const [products, setProducts] = useState([])
     const navigate = useNavigate()
 
@@ -41,24 +40,29 @@ const Home = () =>{
 
     const renderProducts = () => {
         return products.map ((product) => {
+            const cartItemAmout = cartItems[product.id];
             return( 
                 <div className ="col-12 col-sm-6 col-lg-4 mb_80" key={product.id}  >
-                    {/* <div className='card'  onClick={() => navigate(`/products/${product.id}`)}> */}
-                    <div className='card'  onClick={() => addToCart(product.id)}>
-                        <div className='card_img'>
-                            <img src={product.thumbnail}  style={{width: "150px", height: "150px"}}/>
-                        </div>
-                        <div className='card_body' >
-                            <h2>{displayTitle(product)}</h2>
-                            <p>{displayText(product)}</p>
-                            <div className='price_section'>
-                                <div className='price'>
-                                    <h3>{product.price} ,- EUR</h3>
+                    <div className='card' >
+                        <div  onClick={() => navigate(`/products/${product.id}`)}>
+                            <div className='card_img'>
+                                <img src={product.thumbnail}  style={{width: "150px", height: "150px"}}/>
+                            </div>
+                            <div className='card_body' >
+                                <h2>{displayTitle(product)}</h2>
+                                <p>{displayText(product)}</p>
+                                <div className='price_section'>
+                                    <div className='price'>
+                                        <h3>{product.price} ,- EUR</h3>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                       
                         <div className='cta_group'>
-                            <div className='button_act'>Add to Cart</div>
+                            <button className='button_act'  onClick={() => addToCart(product.id)}>
+                                Add to Cart {cartItemAmout}
+                            </button>
                         </div>
                     </div>
                 </div>
