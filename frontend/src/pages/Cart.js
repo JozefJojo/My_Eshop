@@ -1,11 +1,12 @@
-import React, {useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState } from 'react';
 import ProductService from '../services/ProductService';
-
+import { ShopContext } from '../context/shop-context';
+import {CartItem}  from './cart/cart-item';
 
 const Cart = () =>{
 
     const [products, setProducts] = useState([])
-    const amount = products.length;
+    const {cartItems} = useContext(ShopContext);
 
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -16,12 +17,21 @@ const Cart = () =>{
     },[])
 
     console.log (products)
-    console.log (amount)
+    // console.log (amount)
 
 
     return (
-        <div >
-            {amount}
+        <div className='cart'>
+           <div>
+                <h1>Your Cart Items</h1>
+           </div>
+           <div className='cartItems'>
+                {products.map((product) => {
+                    if(cartItems[product.id]){
+                        return <CartItem data = {product} />;
+                    }
+                })}
+           </div>
         </div>
         )
 }
