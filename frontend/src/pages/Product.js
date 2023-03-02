@@ -29,16 +29,6 @@ const Product = () => {
                             <p>{product.description}</p>
                             <h2>Price: <span className='price'> &nbsp;&nbsp;{product.price} ,- EUR</span></h2>
                         </div>
-                        {/* <div className='product_price'>
-                            <div>                      
-                                <h4>Quantity : &nbsp;   
-                                        <Button variant="danger">&emsp;-&emsp;</Button>{' '}
-                                        &nbsp;{product.price} &nbsp;
-                                        <Button variant="success">&emsp;+&emsp;</Button>{' '}
-                                </h4>
-                            </div>
-                            <h2>Price: <span className='price'> &nbsp;&nbsp;{product.price} ,- EUR</span></h2>
-                        </div> */}
                         <div className="mt-auto">
                         {quantity === 0 ? 
                         (<Button className="w-100" >+ Add To Cart</Button>) : 
