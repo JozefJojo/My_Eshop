@@ -5,8 +5,7 @@ import { ShopContext } from '../../context/shop-context';
 
 export const CartItem = (props) => {
     const {id, thumbnail,title,price} = props.data;
-    // const  quantity = 1;
-    const { addToCart, cartItems } = useContext(ShopContext);
+    const {cartItems, addToCart, removeFromCart } = useContext(ShopContext);
     const cartItemAmout = cartItems[id];
 
     return(
@@ -19,7 +18,7 @@ export const CartItem = (props) => {
             </div>
              <div className="d-flex align-items-center flex-column" style={{ gap: ".5rem" }} >
                 <div className="d-flex align-items-center justify-content-center" style={{ gap: ".5rem" }}>
-                    <Button variant="secondary">-</Button>
+                    <Button variant="secondary" onClick={() => removeFromCart(id)}>-</Button>
                     <div>
                     <span className="fs-3">{cartItemAmout}</span> in cart
                     </div>
@@ -27,8 +26,8 @@ export const CartItem = (props) => {
                     <p style={{ paddingLeft: '20px', paddingRight: '20px',marginBottom:'0' }}>{price} ,- EUR</p>
                 </div>
              </div>
-             <p style={{ paddingLeft: '80px', paddingRight: '80px',marginBottom:'0', fontSize: '25px', fontWeight: 'bold' }}>{cartItemAmout* price} ,- EUR</p>
-             <Button variant="danger" size="sm">Remove</Button>
+             <p style={{ paddingLeft: '100px', paddingRight: '80px',marginBottom:'0', fontSize: '25px', fontWeight: 'bold' }}>{cartItemAmout* price} ,- EUR</p>
+             
         </div>
     )
 }

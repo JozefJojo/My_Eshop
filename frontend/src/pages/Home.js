@@ -61,7 +61,7 @@ const Home = () =>{
                        
                         <div className='cta_group'>
                             <button className='button_act'  onClick={() => addToCart(product.id)}>
-                                Add to Cart {cartItemAmout}
+                                Add to Cart {cartItemAmout > 0 && <>({cartItemAmout})</>}
                             </button>
                         </div>
                     </div>
