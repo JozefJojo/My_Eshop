@@ -7,7 +7,8 @@ import "./cart/cart.css";
 const Cart = () =>{
 
     const [products, setProducts] = useState([])
-    const {cartItems} = useContext(ShopContext);
+    const {cartItems, getTotalCartAmount} = useContext(ShopContext);
+    const totalAmount = getTotalCartAmount();
 
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -32,6 +33,9 @@ const Cart = () =>{
                         return <CartItem data = {product} />;
                     }
                 })}
+           </div>
+           <div>
+                <p>Total Amount : {totalAmount} -,EUR </p>
            </div>
         </div>
         )

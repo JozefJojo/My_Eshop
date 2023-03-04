@@ -29,6 +29,7 @@ export const CartItem = (props) => {
              <p style={{ paddingLeft: '100px', paddingRight: '80px',marginBottom:'0', fontSize: '25px', fontWeight: 'bold' }}>{cartItemAmout* price} ,- EUR</p>
              
         </div>
+        
     )
 }
 
