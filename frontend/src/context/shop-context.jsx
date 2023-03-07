@@ -9,7 +9,7 @@ export const ShopContextProvider = (props) => {
 
     const [products, setProducts] = useState([])
    
-
+    
     useEffect (() => {
         const getProductsAsync = async () => {
             const response = await ProductService.getProducts()
@@ -31,7 +31,6 @@ export const ShopContextProvider = (props) => {
             }
           });
       };
-  
     
     const removeFromCart = (itemId) => {
         setCartItems((prev) => {
@@ -63,8 +62,7 @@ export const ShopContextProvider = (props) => {
       return totalAmount;
     };
 
-  
-   
+
     const contextValue = { cartItems , addToCart , removeFromCart, getTotalCartPrice, getTotalCartAmount };
       
     return (
