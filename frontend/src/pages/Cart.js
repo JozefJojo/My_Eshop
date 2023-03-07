@@ -7,7 +7,8 @@ import "./cart/cart.css";
 const Cart = () =>{
 
     const [products, setProducts] = useState([])
-    const {cartItems, getTotalCartAmount} = useContext(ShopContext);
+    const {cartItems, getTotalCartPrice, getTotalCartAmount} = useContext(ShopContext);
+    const totalPrice = getTotalCartPrice();
     const totalAmount = getTotalCartAmount();
 
     useEffect (() => {
@@ -19,24 +20,25 @@ const Cart = () =>{
     },[])
 
     console.log (products)
-    // console.log (amount)
-
-
+   
     return (
         <div className='cart'>
-           <div>
+            <div>
                 <h1>Your Cart Items</h1>
-           </div>
-           <div className='cartItems'>
+            </div>
+            <div>
+                <p>Total Price : {totalPrice} -,EUR </p>
+            </div>
+            <div>
+                <p>Total Amount : {totalAmount} Kus </p>
+            </div>
+            <div className='cartItems'>
                 {products.map((product) => {
                     if(cartItems[product.id]){
                         return <CartItem data = {product} />;
                     }
                 })}
-           </div>
-           <div>
-                <p>Total Amount : {totalAmount} -,EUR </p>
-           </div>
+            </div>
         </div>
         )
 }
