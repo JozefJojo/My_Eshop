@@ -1,11 +1,15 @@
-import React from "react";
+
+import React, {useContext} from 'react';
 import { Button} from "react-bootstrap"
 import { useNavigate, Link } from "react-router-dom";
-// import { Link } from 'react-router-dom';
+import { ShopContext } from '../context/shop-context';
 
 const NavigationBar = () => {
 
+ 
   const navigate = useNavigate();
+  const {getTotalCartAmount} = useContext(ShopContext);
+  const totalAmount = getTotalCartAmount();
 
   function openCart(){
     navigate("/cart")
@@ -40,7 +44,7 @@ const NavigationBar = () => {
                           transform: "translate(25%, 25%)",
                         }}
                       >
-                        {/* {cartQuantity} */} 5
+                        {totalAmount} 
                       </div>
           </Button>
 

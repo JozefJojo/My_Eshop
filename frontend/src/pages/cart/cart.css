@@ -24,26 +24,9 @@
     padding-right: 150px;
   }
   
-
-
-  /* .cartItem .description {
-    width: 100%;
-    font-size: 30px;
+  .important-text {
+    font-weight: bold;
+    color: blue;
   }
-   */
-  /* .countHandler input {
-    width: 40px;
-    text-align: center;
-    font-weight: bolder;
-  } */
+
   
-  /* .checkout button {
-    width: 150px;
-    height: 50px;
-    background-color: rgb(19, 19, 19);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    margin: 10px;
-    cursor: pointer;
-  } */

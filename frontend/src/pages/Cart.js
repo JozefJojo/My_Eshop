@@ -27,10 +27,12 @@ const Cart = () =>{
                 <h1>Your Cart Items</h1>
             </div>
             <div>
-                <p>Total Price : {totalPrice} -,EUR </p>
-            </div>
-            <div>
-                <p>Total Amount : {totalAmount} Kus </p>
+                <p>You have &nbsp;
+                    <span className="important-text">{totalAmount} </span> 
+                    items in your cart with a total price  :&nbsp;
+                    <span className="important-text"> {totalPrice}</span>
+                    &nbsp;-,EUR 
+                </p>
             </div>
             <div className='cartItems'>
                 {products.map((product) => {
