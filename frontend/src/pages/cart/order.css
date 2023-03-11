@@ -1,8 +1,12 @@
 .orderList{
     border-bottom: 1px solid black;
     width: 50%;
-    margin-left: 53px;
-    margin-left: 50px;
+}
+
+.totalPrice{
+    width: 50%;
+    text-align: right;
+    font-weight: bold;
 }
 
 .orderItem{
@@ -22,3 +26,20 @@
     position: relative;
     text-align: left;
 }
+
+.user-input {
+    max-width: 300px;
+    margin-left: 1rem;
+    margin-bottom: 0.7rem
+  }
+
+  .user-form-label{
+    text-align: left;
+  }
+
+  .formContainer{
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
