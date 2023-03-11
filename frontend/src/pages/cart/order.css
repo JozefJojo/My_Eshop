@@ -1,0 +1,24 @@
+.orderList{
+    border-bottom: 1px solid black;
+    width: 50%;
+    margin-left: 53px;
+    margin-left: 50px;
+}
+
+.orderItem{
+    display: grid;
+    display: flex;
+    align-items: center;
+}
+
+.box{
+    width: 25%;
+    position: relative;
+    text-align: right;
+}
+
+.boxTitle {
+    width: 50%;
+    position: relative;
+    text-align: left;
+}

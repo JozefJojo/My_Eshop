@@ -39,7 +39,7 @@ const Cart = () =>{
                 <Button variant="success" className="continue-button" onClick={() => navigate(`/order`)}>Continue</Button>
 
             </div>
-            <div className='cartItems'>
+            <div>
                 {products.map((product) => {
                     if(cartItems[product.id]){
                         return <CartItem key={product.id} data={product} />;

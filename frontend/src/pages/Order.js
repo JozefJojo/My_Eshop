@@ -1,14 +1,16 @@
 import React, {useContext, useEffect, useState } from 'react';
 import ProductService from '../services/ProductService';
 import { ShopContext } from '../context/shop-context';
-import {CartItem}  from './cart/cart-item';
+import { OrderItem } from './cart/order-item';  
+import './cart/order.css';
+
 // import "./cart/cart.css";
 // import Button from 'react-bootstrap/Button';
 
 const Order = () =>{
 
     const [products, setProducts] = useState([])
-    const {cartItems, getTotalCartPrice, getTotalCartAmount} = useContext(ShopContext);
+    const {cartItems} = useContext(ShopContext);
    
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -24,14 +26,19 @@ const Order = () =>{
             <div>
                 <h1>Your Cart Items</h1>
             </div>
-            <div className='cartItems'>
-                {products.map((product) => {
-                    if(cartItems[product.id]){
-                        // return <CartItem key={product.id} data={product} />;
-                        return <div>{product.id}</div>
-                    }
-                })}
-            </div>
+                <div>
+                    <div>
+                        <div className='orderList'> 
+                            {products.map((product) => {
+                                if(cartItems[product.id]){
+                                    return <OrderItem key={product.id} data={product} />;
+                                }
+                            })}
+                        </div>
+                    </div>
+                    
+                </div>
+                    
         </div>
         )
 }
