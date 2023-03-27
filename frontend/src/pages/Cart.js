@@ -3,6 +3,8 @@ import ProductService from '../services/ProductService';
 import { ShopContext } from '../context/shop-context';
 import {CartItem}  from './cart/cart-item';
 import "./cart/cart.css";
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom'
 
 const Cart = () =>{
 
@@ -10,6 +12,7 @@ const Cart = () =>{
     const {cartItems, getTotalCartPrice, getTotalCartAmount} = useContext(ShopContext);
     const totalPrice = getTotalCartPrice();
     const totalAmount = getTotalCartAmount();
+    const navigate = useNavigate();
 
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -26,18 +29,20 @@ const Cart = () =>{
             <div>
                 <h1>Your Cart Items</h1>
             </div>
-            <div>
+            <div className='cartOrder'>
                 <p>You have &nbsp;
                     <span className="important-text">{totalAmount} </span> 
                     items in your cart with a total price  :&nbsp;
                     <span className="important-text"> {totalPrice}</span>
                     &nbsp;-,EUR 
                 </p>
+                <Button variant="success" className="continue-button" onClick={() => navigate(`/order`)}>Continue</Button>
+
             </div>
-            <div className='cartItems'>
+            <div>
                 {products.map((product) => {
                     if(cartItems[product.id]){
-                        return <CartItem data = {product} />;
+                        return <CartItem key={product.id} data={product} />;
                     }
                 })}
             </div>

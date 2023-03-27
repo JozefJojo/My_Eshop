@@ -1,0 +1,51 @@
+.orderList{
+    border-bottom: 1px solid black;
+    width: 50%;
+}
+
+.totalPrice{
+    width: 50%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.orderItem{
+    display: grid;
+    display: flex;
+    align-items: center;
+}
+
+.box{
+    width: 25%;
+    position: relative;
+    text-align: right;
+}
+
+.boxTitle {
+    width: 50%;
+    position: relative;
+    text-align: left;
+}
+
+.user-input {
+    max-width: 300px;
+    margin-left: 1rem;
+    margin-bottom: 0.7rem
+  }
+
+  .user-form-label{
+    text-align: left;
+  }
+
+  .formContainer{
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buy-button {
+    position: absolute; /* nastavíme absolútnu pozíciu pre tlačidlo */
+    padding: 10px 20px; /* pridáme padding pre tlačidlo */
+    margin: 20px;
+  }
