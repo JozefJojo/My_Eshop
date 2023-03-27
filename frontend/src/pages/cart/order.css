@@ -43,3 +43,9 @@
     display: flex;
     flex-direction: column;
   }
+
+  .buy-button {
+    position: absolute; /* nastavíme absolútnu pozíciu pre tlačidlo */
+    padding: 10px 20px; /* pridáme padding pre tlačidlo */
+    margin: 20px;
+  }
