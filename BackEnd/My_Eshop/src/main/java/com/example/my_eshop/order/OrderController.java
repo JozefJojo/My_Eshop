@@ -4,23 +4,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/products")
-public class ProductController {
+@RequestMapping("/orders")
+public class OrderController {
 
-    private final IOrderService productService;
+    private final IOrderService orderService;
 
     @GetMapping
-    public List<Order> getProducts() {return productService.findAllProduct();}
+    public List<Order> getOrders() {return orderService.findAllOrders();}
 
-    @GetMapping("/{id}")
-    public Optional<Order> getProductById(@PathVariable (value = "id") Integer id){
-        return productService.findProductById(id);
-    }
+//    @GetMapping("/{id}")
+//    public Optional<Order> getProductById(@PathVariable (value = "id") Integer id){
+//        return orderSercice.findProductById(id);
+//    }
 
 
 }

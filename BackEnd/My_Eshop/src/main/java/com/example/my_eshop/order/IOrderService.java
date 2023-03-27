@@ -3,9 +3,15 @@ package com.example.my_eshop.order;
 import java.util.List;
 import java.util.Optional;
 
-public interface IProductService {
+public interface IOrderService {
 
-    List<Order> findAllProduct();
+    List<Order> findAllOrders();
+//
+//    Order findById(Integer id);
 
-    Optional<Order> findProductById(Integer id);
+//    Order createOrder(OrderInputModel order);
+
+//    List<Order> findByUserId(int userId);
+
+//    void deleteById(int orderId);
 }

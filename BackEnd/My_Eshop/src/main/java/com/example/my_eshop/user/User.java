@@ -6,29 +6,32 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public Integer id;
 
-    @Column(name = "title")
-    public String title;
+    @Column(name = "name")
+    public String name;
 
-    @Column(name = "description")
-    public String description;
+    @Column(name = "email")
+    public String email;
 
-    @Column(name = "thumbnail")
-    public String thumbnail;
+    @Column(name = "city")
+    public String city;
 
-    @Column(name = "categoryId")
-    public Integer categoryId;
+    @Column(name = "postalCode")
+    public String postalCode;
 
-    @Column(name = "price")
-    public Float price;
+    @Column(name = "address")
+    public String address;
 
-    @Column(name = "producerId")
-    public Integer producerId;
+    @Column(name = "phoneNumber")
+    public String phoneNumber;
+
+    @Column(name = "role")
+    public String role;
 }

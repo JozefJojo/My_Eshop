@@ -8,18 +8,29 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService implements IProductService {
+public class UserService implements IUserService {
 
-    private final ProductRepository productRepository;
-
-    @Override
-    public List<User> findAllProduct() {
-        List<User> products = productRepository.findAll();
-        return products;
-    }
+    private final UserRepository userRepository;
 
     @Override
-    public Optional<User> findProductById(Integer id) {
-        return productRepository.findById(id);
+    public List<User> findAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users;
     }
+
+//    @Override
+//    public Optional<User> findUserById(Integer id) {
+//        return userRepository.findById(id);
+//    }
+
+    @Override
+    public User createUser(User newUser) {
+
+//        var user = this.userRepository.findByName(newUser.name);
+//        if (user == null) {
+            return this.userRepository.save(newUser);
+//        }
+//        return null;
+    }
+
 }

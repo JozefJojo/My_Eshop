@@ -3,9 +3,12 @@ package com.example.my_eshop.user;
 import java.util.List;
 import java.util.Optional;
 
-public interface IProductService {
+public interface IUserService {
 
-    List<User> findAllProduct();
+    List<User> findAllUsers();
 
-    Optional<User> findProductById(Integer id);
+    User createUser(User newUser);
+
+
+//    Optional<User> findUserById(Integer id);
 }
