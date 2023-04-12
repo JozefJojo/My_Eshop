@@ -1,2 +1,6 @@
-package com.example.my_eshop.orderline;public interface IOrderline {
+package com.example.my_eshop.orderline;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderlineRepository extends JpaRepository<Orderline,Integer> {
 }
