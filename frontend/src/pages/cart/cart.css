@@ -24,26 +24,21 @@
     padding-right: 150px;
   }
   
-  .important-text {
-    font-weight: bold;
-    color: blue;
-  }
-
   .cartOrder {
     width: 1000px;
-    height: 200px;
+    min-height: 50px;
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-    background-color:rgba(255, 255, 109, 0.6); 
+    background-color: rgba(255, 255, 109, 0.6); 
     border-radius: 25px;
     margin: 30px;
-
-    position: relative; /* nastavíme relatívnu pozíciu pre kontajner */
+    position: relative;
   }
+
+
+
   
   .continue-button {
     position: absolute; /* nastavíme absolútnu pozíciu pre tlačidlo */

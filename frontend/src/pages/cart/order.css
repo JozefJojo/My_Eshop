@@ -44,6 +44,13 @@
     flex-direction: column;
   }
 
+  .orderLineContainer
+  {
+    padding: 1rem;
+    margin: 1rem;
+    width: 100%;
+  }
+
   .buy-button {
     position: absolute; /* nastavíme absolútnu pozíciu pre tlačidlo */
     padding: 10px 20px; /* pridáme padding pre tlačidlo */

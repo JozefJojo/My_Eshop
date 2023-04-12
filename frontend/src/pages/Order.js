@@ -6,6 +6,7 @@ import './cart/order.css';
 import Button from 'react-bootstrap/Button';
 import { createOrder } from '../services/OrderService'
 import { createUser } from '../services/UserService';
+import { createOrderLine } from '../services/OrderlineService';
 
 const Order = () =>{
 
@@ -21,8 +22,9 @@ const Order = () =>{
         city: "",
         postalCode: "",
         address: "",
-        role:"",
+        role: "user"
       })
+
 
       const setInputField = event => {
         const { name, value } = event.target;
@@ -49,19 +51,27 @@ const Order = () =>{
 
 
      const saveUser = async () =>{
+        console.log(user)
         const response = await createUser(user)
         console.log(response.data)
      }
 
-    //   const submit = async event => {
-    //     event.preventDefault();
-    //     const response = await editUser(user)
-    //     console.log(response.data)
-        // setMessage("Dodací údaje byly aktualizovány.")
-        // setTimeout(() => {
-        //   setMessage("")
-        // }, 1000)
-    //   }
+
+    const saveOrderlines = async () => {
+      console.log(cartItems)
+ 
+      Object.entries(cartItems).forEach((item) => {
+        const orderline  = {
+          id: "",
+          productId: item[0],
+          amount:item[1]
+        }    
+        const response = createOrderLine(orderline);
+        console.log(response.data)
+
+      });
+      
+    };
 
    
     useEffect (() => {
@@ -103,12 +113,6 @@ const Order = () =>{
                             <label className="user-form-label">Phone Number</label>
                             <input type="text" name='phoneNumber' value={user.phoneNumber}className="user-input" onChange={setInputField}/>
 
-                            <label className="user-form-label">id</label>
-                            <input type="text" name='id' value={user.id}className="user-input" onChange={setInputField}/>
-
-                            <label className="user-form-label">userRole</label>
-                            <input type="text" name='role' value={user.role}className="user-input" onChange={setInputField}/>
-
                             {/* <input type="submit" value="Uložit" className="user-input-button"/> */}
                             <Button variant="success" className="buy-button" onClick={() => saveUser()}>save User</Button>
                         </form>
@@ -116,14 +120,13 @@ const Order = () =>{
                     <div className='formContainer'>
                         <h2 className="user-form-label">Items in the cart</h2>
 
-                        <div className='orderList'> 
-                            {products.map((product) => {
-                                if(cartItems[product.id]){
-                                    return <OrderItem key={product.id} data={product} />;
-                                }
-                            })}
+                        <div className='orderList'>
+                            {products.map((product) => cartItems[product.id] ? <OrderItem key={product.id} data={product} /> : null)}
                         </div>
-                        <div className='totalPrice'>{totalPrice} -,E </div>   
+                        <div className='totalPrice'>{totalPrice} -,E </div>  
+                        {/* save Orderline ------toto musis dokoncit -- pridat do Backendu orderline postovanie*/}
+                        <Button variant="success" className="buy-button" onClick={() => saveOrderlines()}>save Orderlines</Button>
+                   
                     </div>
                     <div className='formContainer'>
                         {/* <Button variant="success" className="continue-button" onClick={() => navigate(`/order`)}>Continue</Button> */}
