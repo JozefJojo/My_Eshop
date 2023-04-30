@@ -1,12 +1,17 @@
 package com.example.my_eshop.user;
 
+import com.example.my_eshop.order.Order;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @Entity
 @Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -34,4 +39,21 @@ public class User {
 
     @Column(name = "role")
     public String role;
+
+
+//    Joins
+    @OneToOne(mappedBy = "user")
+    private Order order;
+
+
+    public User(String name, String email, String city, String postalCode, String address, String phoneNumber, String role, Order order) {
+        this.name = name;
+        this.email = email;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+        this.order = order;
+    }
 }

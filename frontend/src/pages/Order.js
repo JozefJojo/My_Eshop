@@ -25,6 +25,7 @@ const Order = () =>{
         role: "user"
       })
 
+      const [userId, setUserId] = useState(null);
 
       const setInputField = event => {
         const { name, value } = event.target;
@@ -35,43 +36,52 @@ const Order = () =>{
       }
 
       const makeOrder = async () =>{
-        // const totalPrice = orderlines.reduce((acc, item) => {return acc + item.totalPrice}, 0)
 
-        const order  = {
-          userId: user.id,
-          address: user.address,
-          totalPrice,
-        //   orderlines: orderlines
-          orderlines: cartItems
+          console.log("Making Order...")
+          console.log(new Date().toISOString().slice(0, 19).replace("T", " "))
+          // await saveOrderlines()
+
+          const userResponse = await createUser(user)
+          const userId = userResponse.data.id
+
+
+          const order  = {
+            orderId:"",
+            created: new Date().toISOString().slice(0, 19).replace("T", " "),
+            status: "created",
+            // userId,
+            user
         }
-    
-        const response  = await createOrder(order)
-        console.log(response.data)
+          console.log(order)
+          const response = await createOrder(order)
+          // console.log(response.data)
+
+
       }
 
 
-     const saveUser = async () =>{
-        console.log(user)
-        const response = await createUser(user)
-        console.log(response.data)
-     }
+    //  const saveUser = async () =>{
+    //     console.log(user)
+    //     const response = await createUser(user)
+    //     console.log(response.data)
+    //  }
 
 
-    const saveOrderlines = async () => {
-      console.log(cartItems)
+    // const saveOrderlines = async () => {
+    //   console.log(cartItems)
  
-      Object.entries(cartItems).forEach((item) => {
-        const orderline  = {
-          id: "",
-          productId: item[0],
-          amount:item[1]
-        }    
-        const response = createOrderLine(orderline);
-        console.log(response.data)
+    //   Object.entries(cartItems).forEach((item) => {
+    //     const orderline  = {
+    //       id: "",
+    //       productId: item[0],
+    //       amount:item[1]
+    //     }    
+    //     const response = createOrderLine(orderline);
+    //     console.log(response.data)
 
-      });
+    //   });
       
-    };
+    // };
 
    
     useEffect (() => {
@@ -114,7 +124,7 @@ const Order = () =>{
                             <input type="text" name='phoneNumber' value={user.phoneNumber}className="user-input" onChange={setInputField}/>
 
                             {/* <input type="submit" value="Uložit" className="user-input-button"/> */}
-                            <Button variant="success" className="buy-button" onClick={() => saveUser()}>save User</Button>
+                            {/* <Button variant="success" className="buy-button" onClick={() => saveUser()}>save User</Button> */}
                         </form>
                     </div>
                     <div className='formContainer'>
@@ -125,7 +135,7 @@ const Order = () =>{
                         </div>
                         <div className='totalPrice'>{totalPrice} -,E </div>  
                         {/* save Orderline ------toto musis dokoncit -- pridat do Backendu orderline postovanie*/}
-                        <Button variant="success" className="buy-button" onClick={() => saveOrderlines()}>save Orderlines</Button>
+                        {/* <Button variant="success" className="buy-button" onClick={() => saveOrderlines()}>save Orderlines</Button> */}
                    
                     </div>
                     <div className='formContainer'>

@@ -6,10 +6,13 @@ import java.util.Optional;
 public interface IOrderService {
 
     List<Order> findAllOrders();
+
+
 //
 //    Order findById(Integer id);
 
 //    Order createOrder(OrderInputModel order);
+    Order createOrder(Order order);
 
 //    List<Order> findByUserId(int userId);
 

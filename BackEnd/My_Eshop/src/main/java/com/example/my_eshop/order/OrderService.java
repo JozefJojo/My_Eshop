@@ -10,12 +10,17 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OrderService implements IOrderService {
 
-    private final OrderRepository productRepository;
+    private final OrderRepository orderRepository;
 
     @Override
     public List<Order> findAllOrders() {
-        List<Order> orders = productRepository.findAll();
+        List<Order> orders = orderRepository.findAll();
         return orders;
+    }
+
+    @Override
+    public Order createOrder(Order order) {
+        return this.orderRepository.save(order);
     }
 
 //    @Override

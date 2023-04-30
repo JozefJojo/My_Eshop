@@ -9,6 +9,8 @@ public interface IUserService {
 
     User createUser(User newUser);
 
+    Optional<User> findUserById(Integer id);
+
 
 //    Optional<User> findUserById(Integer id);
 }

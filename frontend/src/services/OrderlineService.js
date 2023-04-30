@@ -6,10 +6,10 @@ export const createOrderLine = async (item) => {
 
   try {
     const response = await axios.post("http://localhost:8080/orderlines", item) 
-    console.log('Success:', response.data);
+    console.log('Success - Orderlines was created:', response.data);
     return response
   } catch (error) {
-    console.log('Chyba pri ukladaní položky:',error.message)    
+    console.log('Error - Orderlines was not created:',error.message)    
   }
 
 }
