@@ -20,6 +20,10 @@ public class OrderlineService implements IOrderService{
 
     @Override
     public Orderline createOrderline(Orderline newOrderline) {
-        return this.orderlineRepository.save(newOrderline);
+
+
+        return this.orderlineRepository.saveAndFlush(newOrderline);
     }
+
+
 }

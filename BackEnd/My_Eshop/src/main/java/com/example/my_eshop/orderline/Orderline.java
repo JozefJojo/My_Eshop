@@ -7,27 +7,28 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table (name = "orderline")
+//@Table (name = "orderline")
 public class Orderline {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    public Integer id;
+    private Integer orderlineId;
 
-//    @Column(name = "productId")
-//    public Integer productId;
+    private Integer productId;
 
-    @Column(name = "amount")
-    public Integer amount;
+    private Integer amount;
 
-//Joins
-//    @ManyToOne
-//    @JoinColumn(name = "neworderId")
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+
+    public Orderline(Integer productId, Integer amount) {
+        this.productId = productId;
+        this.amount = amount;
+    }
+}
+
+//@ManyToOne
+//    @JoinColumn(name = "order_id", referencedColumnName = "id")
 //    private Order order;
 
-    @OneToOne
-    @JoinColumn(name = "productId")
-    private Product product;
-
-}

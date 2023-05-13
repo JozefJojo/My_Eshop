@@ -9,35 +9,35 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "user")
+//@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+//    @Column(name = "id")
     public Integer id;
 
-    @Column(name = "name")
+//    @Column(name = "name")
     public String name;
 
-    @Column(name = "email")
+//    @Column(name = "email")
     public String email;
 
-    @Column(name = "city")
+//    @Column(name = "city")
     public String city;
 
-    @Column(name = "postalCode")
+//    @Column(name = "postalCode")
     public String postalCode;
 
-    @Column(name = "address")
+//    @Column(name = "address")
     public String address;
 
-    @Column(name = "phoneNumber")
+//    @Column(name = "phoneNumber")
     public String phoneNumber;
 
-    @Column(name = "role")
+//    @Column(name = "role")
     public String role;
 
 

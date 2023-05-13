@@ -5,7 +5,7 @@ import { OrderItem } from './cart/order-item';
 import './cart/order.css';
 import Button from 'react-bootstrap/Button';
 import { createOrder } from '../services/OrderService'
-import { createUser } from '../services/UserService';
+// import { createUser } from '../services/UserService';
 import { createOrderLine } from '../services/OrderlineService';
 
 const Order = () =>{
@@ -25,8 +25,6 @@ const Order = () =>{
         role: "user"
       })
 
-      const [userId, setUserId] = useState(null);
-
       const setInputField = event => {
         const { name, value } = event.target;
         setUser((prevState) => ({
@@ -38,33 +36,17 @@ const Order = () =>{
       const makeOrder = async () =>{
 
           console.log("Making Order...")
-          console.log(new Date().toISOString().slice(0, 19).replace("T", " "))
           // await saveOrderlines()
-
-          const userResponse = await createUser(user)
-          const userId = userResponse.data.id
-
 
           const order  = {
             orderId:"",
             created: new Date().toISOString().slice(0, 19).replace("T", " "),
             status: "created",
-            // userId,
             user
         }
-          console.log(order)
           const response = await createOrder(order)
           // console.log(response.data)
-
-
       }
-
-
-    //  const saveUser = async () =>{
-    //     console.log(user)
-    //     const response = await createUser(user)
-    //     console.log(response.data)
-    //  }
 
 
     // const saveOrderlines = async () => {
@@ -123,8 +105,6 @@ const Order = () =>{
                             <label className="user-form-label">Phone Number</label>
                             <input type="text" name='phoneNumber' value={user.phoneNumber}className="user-input" onChange={setInputField}/>
 
-                            {/* <input type="submit" value="Uložit" className="user-input-button"/> */}
-                            {/* <Button variant="success" className="buy-button" onClick={() => saveUser()}>save User</Button> */}
                         </form>
                     </div>
                     <div className='formContainer'>
