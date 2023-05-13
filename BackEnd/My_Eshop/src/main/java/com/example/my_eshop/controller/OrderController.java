@@ -1,5 +1,8 @@
 package com.example.my_eshop.controller;
 
+import com.example.my_eshop.repository.OrderRepository;
+import com.example.my_eshop.repository.OrderlineRepository;
+import com.example.my_eshop.repository.UserRepository;
 import com.example.my_eshop.service.interfaces.IOrderService;
 import com.example.my_eshop.entity.OrderEntity;
 import com.example.my_eshop.entity.Orderline;
@@ -20,6 +23,9 @@ public class OrderController {
 
     private final IOrderService orderService;
     private final IUserService userService;
+    private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
+    private final OrderlineRepository orderlineRepository;
 
     @GetMapping
     public List<OrderEntity> getOrders() {return orderService.findAllOrders();}
@@ -34,23 +40,10 @@ public class OrderController {
 //    a taktiez na vytvorenie User mozes pouzit DTO  , potrebujes vediet iba zakladne udaje , zvysok das
 //    vygenerovat v User.class  (vygenerovat nechas id, user rolu)
     @PostMapping ("/createOrderWithUser")
-    public ResponseEntity<OrderEntity> createOrder(@RequestBody OrderEntity orderEntity) {
-//        User user = userService.createUser(orderEntity.getUser());
-        OrderEntity savedOrderEntity = orderService.createOrder(orderEntity);
-
-        Orderline o=new Orderline(1,3);
-        Orderline o1=new Orderline(1,3);
-        Orderline o2=new Orderline(1,3);
-//        o.setOrderEntity(orderEntity);
-//        o1.setOrderEntity(orderEntity);
-//        o2.setOrderEntity(orderEntity);
-//        orderEntity.setOrderlines(List.of(o,o1,o2));
-
-//        orderEntity.setUser(user);
-//        Order savedOrder = orderService.createOrder(order);
+    public ResponseEntity<OrderEntity> createOrder() {
 
 
-        return new ResponseEntity<>(savedOrderEntity, HttpStatus.CREATED);
+        return new ResponseEntity<>(new OrderEntity(), HttpStatus.CREATED);
     }
 
 
