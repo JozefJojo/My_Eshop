@@ -8,44 +8,27 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-//@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "id")
-    public Integer id;
+    private Integer id;
+    private String name;
+    private String email;
+    private String city;
+    private String postalCode;
+    private String address;
+    private String phoneNumber;
+    private String role;
 
-//    @Column(name = "name")
-    public String name;
-
-//    @Column(name = "email")
-    public String email;
-
-//    @Column(name = "city")
-    public String city;
-
-//    @Column(name = "postalCode")
-    public String postalCode;
-
-//    @Column(name = "address")
-    public String address;
-
-//    @Column(name = "phoneNumber")
-    public String phoneNumber;
-
-//    @Column(name = "role")
-    public String role;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private OrderEntity orderEntity;
 
 
-//    Joins
-    @OneToOne(mappedBy = "user")
-    private Order order;
 
 
-    public User(String name, String email, String city, String postalCode, String address, String phoneNumber, String role, Order order) {
+    public User(String name, String email, String city, String postalCode, String address, String phoneNumber, String role, OrderEntity orderEntity) {
         this.name = name;
         this.email = email;
         this.city = city;
@@ -53,6 +36,6 @@ public class User {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.role = role;
-        this.order = order;
+        this.orderEntity = orderEntity;
     }
 }

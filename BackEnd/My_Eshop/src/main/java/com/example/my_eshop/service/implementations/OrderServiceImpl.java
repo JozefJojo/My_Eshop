@@ -1,6 +1,6 @@
 package com.example.my_eshop.service.implementations;
 
-import com.example.my_eshop.entity.Order;
+import com.example.my_eshop.entity.OrderEntity;
 import com.example.my_eshop.repository.OrderRepository;
 import com.example.my_eshop.service.interfaces.IOrderService;
 import lombok.RequiredArgsConstructor;
@@ -15,14 +15,14 @@ public class OrderServiceImpl implements IOrderService {
     private final OrderRepository orderRepository;
 
     @Override
-    public List<Order> findAllOrders() {
-        List<Order> orders = orderRepository.findAll();
-        return orders;
+    public List<OrderEntity> findAllOrders() {
+        List<OrderEntity> orderEntities = orderRepository.findAll();
+        return orderEntities;
     }
 
     @Override
-    public Order createOrder(Order order) {
-        return this.orderRepository.save(order);
+    public OrderEntity createOrder(OrderEntity orderEntity) {
+        return this.orderRepository.save(orderEntity);
     }
 
 //    @Override

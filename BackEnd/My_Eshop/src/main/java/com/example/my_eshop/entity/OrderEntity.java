@@ -9,40 +9,35 @@ import java.util.Date;
 import java.util.List;
 
 
-@Data
 @Entity
-//@Table(name = "o_rder")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+@Data
+public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer orderId;
 
     private String created;
-
     private String status;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL)
     private List<Orderline> orderlines;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public Order(String created, String status, User user) {
+    public OrderEntity(String created, String status, User user) {
         this.created = created;
         this.status = status;
         this.user = user;
     }
 
-    public Order(User user, List<Orderline> orderlines) {
+    public OrderEntity(User user, List<Orderline> orderlines) {
         this.created = new Date().toString();
         this.status = "PROCESSED";
-        this.user = user;
+//        this.user = user;
         this.orderlines = orderlines;
     }
 }
-//@OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
-//    private List<Orderline> orderlines;

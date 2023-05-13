@@ -2,10 +2,13 @@ package com.example.my_eshop.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
-//@Table (name = "orderline")
+@NoArgsConstructor
 public class Orderline {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,17 +19,10 @@ public class Orderline {
     private Integer amount;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
-
+    private OrderEntity orderEntity;
 
     public Orderline(Integer productId, Integer amount) {
         this.productId = productId;
         this.amount = amount;
     }
 }
-
-//@ManyToOne
-//    @JoinColumn(name = "order_id", referencedColumnName = "id")
-//    private Order order;
-

@@ -1,7 +1,7 @@
 package com.example.my_eshop.controller;
 
 import com.example.my_eshop.service.interfaces.IOrderService;
-import com.example.my_eshop.entity.Order;
+import com.example.my_eshop.entity.OrderEntity;
 import com.example.my_eshop.entity.Orderline;
 import com.example.my_eshop.service.interfaces.IUserService;
 import com.example.my_eshop.entity.User;
@@ -22,7 +22,7 @@ public class OrderController {
     private final IUserService userService;
 
     @GetMapping
-    public List<Order> getOrders() {return orderService.findAllOrders();}
+    public List<OrderEntity> getOrders() {return orderService.findAllOrders();}
 
 //    @GetMapping("/{id}")
 //    public Optional<Order> getProductById(@PathVariable (value = "id") Integer id){
@@ -34,23 +34,23 @@ public class OrderController {
 //    a taktiez na vytvorenie User mozes pouzit DTO  , potrebujes vediet iba zakladne udaje , zvysok das
 //    vygenerovat v User.class  (vygenerovat nechas id, user rolu)
     @PostMapping ("/createOrderWithUser")
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        User user = userService.createUser(order.getUser());
-        Order savedOrder = orderService.createOrder(order);
+    public ResponseEntity<OrderEntity> createOrder(@RequestBody OrderEntity orderEntity) {
+//        User user = userService.createUser(orderEntity.getUser());
+        OrderEntity savedOrderEntity = orderService.createOrder(orderEntity);
 
         Orderline o=new Orderline(1,3);
         Orderline o1=new Orderline(1,3);
         Orderline o2=new Orderline(1,3);
-        o.setOrder(order);
-        o1.setOrder(order);
-        o2.setOrder(order);
-        order.setOrderlines(List.of(o,o1,o2));
+//        o.setOrderEntity(orderEntity);
+//        o1.setOrderEntity(orderEntity);
+//        o2.setOrderEntity(orderEntity);
+//        orderEntity.setOrderlines(List.of(o,o1,o2));
 
-        order.setUser(user);
+//        orderEntity.setUser(user);
 //        Order savedOrder = orderService.createOrder(order);
 
 
-        return new ResponseEntity<>(savedOrder, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedOrderEntity, HttpStatus.CREATED);
     }
 
 
