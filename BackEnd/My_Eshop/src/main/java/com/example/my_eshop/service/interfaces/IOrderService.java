@@ -1,7 +1,8 @@
-package com.example.my_eshop.order;
+package com.example.my_eshop.service.interfaces;
+
+import com.example.my_eshop.entity.Order;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IOrderService {
 

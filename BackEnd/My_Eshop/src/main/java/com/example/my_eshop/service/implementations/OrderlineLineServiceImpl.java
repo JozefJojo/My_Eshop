@@ -1,6 +1,8 @@
-package com.example.my_eshop.orderline;
+package com.example.my_eshop.service.implementations;
 
-import com.example.my_eshop.user.User;
+import com.example.my_eshop.entity.Orderline;
+import com.example.my_eshop.repository.OrderlineRepository;
+import com.example.my_eshop.service.interfaces.IOrderLineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class OrderlineService implements IOrderService{
+public class OrderlineLineServiceImpl implements IOrderLineService {
 
     private final OrderlineRepository orderlineRepository;
 

@@ -1,5 +1,7 @@
-package com.example.my_eshop.user;
+package com.example.my_eshop.controller;
 
+import com.example.my_eshop.service.interfaces.IUserService;
+import com.example.my_eshop.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -8,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.rmi.ServerException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package com.example.my_eshop.product;
+package com.example.my_eshop.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,4 +1,6 @@
-package com.example.my_eshop.user;
+package com.example.my_eshop.service.interfaces;
+
+import com.example.my_eshop.entity.User;
 
 import java.util.List;
 import java.util.Optional;

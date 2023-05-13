@@ -1,8 +1,10 @@
-package com.example.my_eshop.order;
+package com.example.my_eshop.controller;
 
-import com.example.my_eshop.orderline.Orderline;
-import com.example.my_eshop.user.IUserService;
-import com.example.my_eshop.user.User;
+import com.example.my_eshop.service.interfaces.IOrderService;
+import com.example.my_eshop.entity.Order;
+import com.example.my_eshop.entity.Orderline;
+import com.example.my_eshop.service.interfaces.IUserService;
+import com.example.my_eshop.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

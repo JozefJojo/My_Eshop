@@ -1,5 +1,8 @@
-package com.example.my_eshop.user;
+package com.example.my_eshop.service.implementations;
 
+import com.example.my_eshop.entity.User;
+import com.example.my_eshop.repository.UserRepository;
+import com.example.my_eshop.service.interfaces.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
 

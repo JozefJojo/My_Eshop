@@ -1,13 +1,10 @@
-package com.example.my_eshop.order;
+package com.example.my_eshop.entity;
 
-import com.example.my_eshop.orderline.Orderline;
-import com.example.my_eshop.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

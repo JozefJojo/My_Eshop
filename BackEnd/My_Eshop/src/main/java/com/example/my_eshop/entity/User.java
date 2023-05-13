@@ -1,6 +1,5 @@
-package com.example.my_eshop.user;
+package com.example.my_eshop.entity;
 
-import com.example.my_eshop.order.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,8 @@
-package com.example.my_eshop.orderline;
+package com.example.my_eshop.controller;
 
 
+import com.example.my_eshop.service.interfaces.IOrderLineService;
+import com.example.my_eshop.entity.Orderline;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +18,7 @@ import java.util.List;
 @RequestMapping("/orderlines")
 public class OrderlineController {
 
-    private final IOrderService orderService;
+    private final IOrderLineService orderService;
 
     @GetMapping
     public List<Orderline> getOrderlines(){

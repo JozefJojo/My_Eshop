@@ -1,14 +1,16 @@
-package com.example.my_eshop.order;
+package com.example.my_eshop.service.implementations;
 
+import com.example.my_eshop.entity.Order;
+import com.example.my_eshop.repository.OrderRepository;
+import com.example.my_eshop.service.interfaces.IOrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class OrderService implements IOrderService {
+public class OrderServiceImpl implements IOrderService {
 
     private final OrderRepository orderRepository;
 
