@@ -15,14 +15,14 @@ const Order = () =>{
     const totalPrice = getTotalCartPrice();
 
     const [user, setUser] = useState({
-        id: "",
+        // id: "",
         name: "",
         email: "",
         phoneNumber:"",
         city: "",
         postalCode: "",
         address: "",
-        role: "user"
+        // role: "user"
       })
 
       const setInputField = event => {
@@ -38,15 +38,23 @@ const Order = () =>{
           console.log("Making Order...")
           // await saveOrderlines()
 
-          const order  = {
-            orderId:"",
-            created: new Date().toISOString().slice(0, 19).replace("T", " "),
-            status: "created",
-            user
-        }
+        //   const order  = {
+        //     orderId:"",
+        //     created: new Date().toISOString().slice(0, 19).replace("T", " "),
+        //     status: "created",
+        //     user
+        // }
+
+            const order  = {
+                orderlines: cartItems,
+                user
+            }
+
           const response = await createOrder(order)
           // console.log(response.data)
       }
+
+
 
 
     // const saveOrderlines = async () => {

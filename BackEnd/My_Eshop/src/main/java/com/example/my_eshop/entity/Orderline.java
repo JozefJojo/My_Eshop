@@ -13,9 +13,7 @@ public class Orderline {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer orderlineId;
-
     private Integer productId;
-
     private Integer amount;
 
     @ManyToOne(fetch = FetchType.LAZY)

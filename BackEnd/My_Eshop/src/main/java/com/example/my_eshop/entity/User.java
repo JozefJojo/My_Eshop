@@ -7,13 +7,8 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+
     private String name;
     private String email;
     private String city;
@@ -22,20 +17,14 @@ public class User {
     private String phoneNumber;
     private String role;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private OrderEntity orderEntity;
-
-
-
-
-    public User(String name, String email, String city, String postalCode, String address, String phoneNumber, String role, OrderEntity orderEntity) {
+//    toto som pridal kontruktor
+    public User(String name, String email, String city, String postalCode, String address, String phoneNumber) {
         this.name = name;
         this.email = email;
         this.city = city;
         this.postalCode = postalCode;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.role = role;
-        this.orderEntity = orderEntity;
+        this.role = "user";
     }
 }
