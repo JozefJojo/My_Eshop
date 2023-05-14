@@ -18,7 +18,8 @@ public class Orderline {
 
     private Integer amount;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orderId")
     private OrderEntity orderEntity;
 
     public Orderline(Integer productId, Integer amount) {

@@ -41,6 +41,29 @@ public class OrderController {
 //    vygenerovat v User.class  (vygenerovat nechas id, user rolu)
     @PostMapping ("/createOrderWithUser")
     public ResponseEntity<OrderEntity> createOrder() {
+        User user = new User();
+        user.setName("name");
+        user.setCity("city");
+        Orderline orderline = new Orderline();
+        orderline.setAmount(2);
+        orderline.setOrderlineId(3);
+        Orderline orderline2 = new Orderline();
+        Orderline orderline3 = new Orderline();
+        OrderEntity orderEntity = new OrderEntity();
+        userRepository.saveAndFlush(user);
+        orderlineRepository.saveAllAndFlush(List.of(orderline,orderline2,orderline3));
+        orderRepository.saveAndFlush(orderEntity);
+
+
+        user.setOrderEntity(orderEntity);
+        orderEntity.setUser(user);
+
+        orderEntity.setOrderlines(List.of(orderline,orderline2,orderline3));
+        orderline.setOrderEntity(orderEntity);
+
+        orderlineRepository.saveAndFlush(orderline);
+        userRepository.saveAndFlush(user);
+        orderRepository.saveAndFlush(orderEntity);
 
 
         return new ResponseEntity<>(new OrderEntity(), HttpStatus.CREATED);
