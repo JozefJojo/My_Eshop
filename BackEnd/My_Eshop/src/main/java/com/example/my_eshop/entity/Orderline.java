@@ -1,5 +1,6 @@
 package com.example.my_eshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +17,10 @@ public class Orderline {
     private Integer productId;
     private Integer amount;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId")
+    @JsonIgnore
     private OrderEntity orderEntity;
 
     public Orderline(Integer productId, Integer amount) {

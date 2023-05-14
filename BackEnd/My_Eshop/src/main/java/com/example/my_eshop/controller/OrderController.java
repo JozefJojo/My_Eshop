@@ -35,37 +35,23 @@ public class OrderController {
 //    zvysok mozes dat generovat v triede Order napriklad cas kedy vznikla order, status ze je created
 //    a taktiez na vytvorenie User mozes pouzit DTO  , potrebujes vediet iba zakladne udaje , zvysok das
 //    vygenerovat v User.class  (vygenerovat nechas id, user rolu)
-    @PostMapping ("/createOrderWithUser")
+
+
+
+    /**
+     * teraz to funguje popici :D
+     */
+
+    @PostMapping("/createOrderWithUser")
     public ResponseEntity<OrderEntity> createOrder(@RequestBody OrderEntity orderEntity) {
-        orderEntity.getOrderlines().forEach(orderlineRepository::save);
-//        orderEntity.getOrderlines().forEach(orderline ->{
-//            orderline.setOrderEntity(orderEntity);
-//            orderlineRepository.saveAndFlush(orderline);
-//        });
-
-        List<Orderline> orderlineList =orderEntity.getOrderlines();
-
-//        User user = new User(
-//                orderEntity.getName(),
-//                orderEntity.getEmail(),
-//                orderEntity.getCity(),
-//                orderEntity.getPostalCode(),
-//                orderEntity.getAddress(),
-//                orderEntity.getPhoneNumber()
-//        );
-
-//        OrderEntity orderEntity1 = new OrderEntity("2023-05-23","PROCESS", user);
-
-//        orderEntity musi byt z konstruktoru  (inac viem cez postmana si zadelit aj rolu ADMIN)
-//        orderRepository.saveAndFlush(orderEntity1);
-        orderEntity.setOrderlines(orderlineList);
+        List<Orderline> orderlines = orderEntity.getOrderlines();
+        for (Orderline orderline : orderlines) {
+            orderline.setOrderEntity(orderEntity);
+        }
+        orderEntity.setOrderlines(orderlines);
         orderRepository.saveAndFlush(orderEntity);
 
-
-       orderEntity.getOrderlines().forEach(System.out::println);
-
-//        return new ResponseEntity<>(new OrderEntity(),HttpStatus.CREATED);
-        return new ResponseEntity<>(orderEntity,HttpStatus.CREATED);
+        return new ResponseEntity<>(orderEntity, HttpStatus.CREATED);
     }
 
 
