@@ -1,5 +1,8 @@
-package com.example.my_eshop.product;
+package com.example.my_eshop.service.implementations;
 
+import com.example.my_eshop.entity.Product;
+import com.example.my_eshop.repository.ProductRepository;
+import com.example.my_eshop.service.interfaces.IProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService implements IProductService {
+public class ProductServiceImpl implements IProductService {
 
     private final ProductRepository productRepository;
 

@@ -4,8 +4,7 @@ import { ShopContext } from '../context/shop-context';
 import { OrderItem } from './cart/order-item';  
 import './cart/order.css';
 import Button from 'react-bootstrap/Button';
-import { createOrder } from '../services/OrderService'
-import { createUser } from '../services/UserService';
+import { createOrder } from '../services/OrderService';
 
 const Order = () =>{
 
@@ -14,15 +13,13 @@ const Order = () =>{
     const totalPrice = getTotalCartPrice();
 
     const [user, setUser] = useState({
-        id: "",
         name: "",
         email: "",
         phoneNumber:"",
         city: "",
         postalCode: "",
         address: "",
-        role:"",
-      })
+    })
 
       const setInputField = event => {
         const { name, value } = event.target;
@@ -33,35 +30,29 @@ const Order = () =>{
       }
 
       const makeOrder = async () =>{
-        // const totalPrice = orderlines.reduce((acc, item) => {return acc + item.totalPrice}, 0)
+
+        console.log("Making Order...")
+
+        const orderlines = Object.entries(cartItems).map(([productId, amount]) => ({
+        productId: parseInt(productId),
+        amount: amount
+        }));
 
         const order  = {
-          userId: user.id,
-          address: user.address,
-          totalPrice,
-        //   orderlines: orderlines
-          orderlines: cartItems
+            created: new Date().toISOString().slice(0, 19).replace("T", " "),
+            status: "CREATED",
+            name: user.name,
+            email: user.email,
+            city: user.city,
+            postalCode: user.postalCode,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
+            role: "user-admin",
+            orderlines
         }
-    
-        const response  = await createOrder(order)
-        console.log(response.data)
+
+        const response = await createOrder(order)
       }
-
-
-     const saveUser = async () =>{
-        const response = await createUser(user)
-        console.log(response.data)
-     }
-
-    //   const submit = async event => {
-    //     event.preventDefault();
-    //     const response = await editUser(user)
-    //     console.log(response.data)
-        // setMessage("Dodací údaje byly aktualizovány.")
-        // setTimeout(() => {
-        //   setMessage("")
-        // }, 1000)
-    //   }
 
    
     useEffect (() => {
@@ -81,7 +72,6 @@ const Order = () =>{
                 <div>
                     
                     <div>
-                        {/* <form className='formContainer' onSubmit={submit}> */}
                         <form className='formContainer'>
                             <h2 className="user-form-label">Delivery data</h2>
 
@@ -103,30 +93,17 @@ const Order = () =>{
                             <label className="user-form-label">Phone Number</label>
                             <input type="text" name='phoneNumber' value={user.phoneNumber}className="user-input" onChange={setInputField}/>
 
-                            <label className="user-form-label">id</label>
-                            <input type="text" name='id' value={user.id}className="user-input" onChange={setInputField}/>
-
-                            <label className="user-form-label">userRole</label>
-                            <input type="text" name='role' value={user.role}className="user-input" onChange={setInputField}/>
-
-                            {/* <input type="submit" value="Uložit" className="user-input-button"/> */}
-                            <Button variant="success" className="buy-button" onClick={() => saveUser()}>save User</Button>
                         </form>
                     </div>
                     <div className='formContainer'>
                         <h2 className="user-form-label">Items in the cart</h2>
 
-                        <div className='orderList'> 
-                            {products.map((product) => {
-                                if(cartItems[product.id]){
-                                    return <OrderItem key={product.id} data={product} />;
-                                }
-                            })}
+                        <div className='orderList'>
+                            {products.map((product) => cartItems[product.id] ? <OrderItem key={product.id} data={product} /> : null)}
                         </div>
-                        <div className='totalPrice'>{totalPrice} -,E </div>   
+                        <div className='totalPrice'>{totalPrice} -,E </div>           
                     </div>
                     <div className='formContainer'>
-                        {/* <Button variant="success" className="continue-button" onClick={() => navigate(`/order`)}>Continue</Button> */}
                         <Button variant="success" className="buy-button" onClick={() => makeOrder()}>complete the purchase - BUY</Button>
                     </div>
                

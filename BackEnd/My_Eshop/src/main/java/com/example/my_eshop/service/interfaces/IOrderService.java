@@ -1,15 +1,19 @@
-package com.example.my_eshop.order;
+package com.example.my_eshop.service.interfaces;
+
+import com.example.my_eshop.entity.OrderEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IOrderService {
 
-    List<Order> findAllOrders();
+    List<OrderEntity> findAllOrders();
+
+
 //
 //    Order findById(Integer id);
 
 //    Order createOrder(OrderInputModel order);
+    OrderEntity createOrder(OrderEntity orderEntity);
 
 //    List<Order> findByUserId(int userId);
 
