@@ -1,4 +1,6 @@
-package com.example.my_eshop.product;
+package com.example.my_eshop.service.interfaces;
+
+import com.example.my_eshop.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

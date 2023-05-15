@@ -4,7 +4,8 @@ import { ShopContext } from '../context/shop-context';
 import {CartItem}  from './cart/cart-item';
 import "./cart/cart.css";
 import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { OrderItem } from './cart/order-item'; 
 
 const Cart = () =>{
 
@@ -30,15 +31,20 @@ const Cart = () =>{
                 <h1>Your Cart Items</h1>
             </div>
             <div className='cartOrder'>
-                <p>You have &nbsp;
-                    <span className="important-text">{totalAmount} </span> 
-                    items in your cart with a total price  :&nbsp;
-                    <span className="important-text"> {totalPrice}</span>
-                    &nbsp;-,EUR 
-                </p>
+                <div className='orderLineContainer'>
+                        <h2 className="user-form-label">{<span>{totalAmount} </span> }Items in the cart</h2>
+
+                        <div className='orderList'>
+                            {products.map((product) => cartItems[product.id] ? <OrderItem key={product.id} data={product} /> : null)}
+                        </div>
+                        <div className='totalPrice'>{totalPrice} -,E </div>  
+                        {/* save Orderline */}
+                </div>
+
                 <Button variant="success" className="continue-button" onClick={() => navigate(`/order`)}>Continue</Button>
 
             </div>
+
             <div>
                 {products.map((product) => {
                     if(cartItems[product.id]){

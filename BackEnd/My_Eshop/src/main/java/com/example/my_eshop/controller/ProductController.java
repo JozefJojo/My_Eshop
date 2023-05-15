@@ -1,5 +1,7 @@
-package com.example.my_eshop.product;
+package com.example.my_eshop.controller;
 
+import com.example.my_eshop.service.interfaces.IProductService;
+import com.example.my_eshop.entity.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
