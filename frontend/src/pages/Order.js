@@ -4,9 +4,7 @@ import { ShopContext } from '../context/shop-context';
 import { OrderItem } from './cart/order-item';  
 import './cart/order.css';
 import Button from 'react-bootstrap/Button';
-import { createOrder } from '../services/OrderService'
-// import { createUser } from '../services/UserService';
-import { createOrderLine } from '../services/OrderlineService';
+import { createOrder } from '../services/OrderService';
 
 const Order = () =>{
 
@@ -15,15 +13,13 @@ const Order = () =>{
     const totalPrice = getTotalCartPrice();
 
     const [user, setUser] = useState({
-        // id: "",
         name: "",
         email: "",
         phoneNumber:"",
         city: "",
         postalCode: "",
         address: "",
-        // role: "user"
-      })
+    })
 
       const setInputField = event => {
         const { name, value } = event.target;
@@ -35,43 +31,28 @@ const Order = () =>{
 
       const makeOrder = async () =>{
 
-          console.log("Making Order...")
-          // await saveOrderlines()
+        console.log("Making Order...")
 
-        //   const order  = {
-        //     orderId:"",
-        //     created: new Date().toISOString().slice(0, 19).replace("T", " "),
-        //     status: "created",
-        //     user
-        // }
+        const orderlines = Object.entries(cartItems).map(([productId, amount]) => ({
+        productId: parseInt(productId),
+        amount: amount
+        }));
 
-            const order  = {
-                orderlines: cartItems,
-                user
-            }
+        const order  = {
+            created: new Date().toISOString().slice(0, 19).replace("T", " "),
+            status: "CREATED",
+            name: user.name,
+            email: user.email,
+            city: user.city,
+            postalCode: user.postalCode,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
+            role: "user-admin",
+            orderlines
+        }
 
-          const response = await createOrder(order)
-          // console.log(response.data)
+        const response = await createOrder(order)
       }
-
-
-
-
-    // const saveOrderlines = async () => {
-    //   console.log(cartItems)
- 
-    //   Object.entries(cartItems).forEach((item) => {
-    //     const orderline  = {
-    //       id: "",
-    //       productId: item[0],
-    //       amount:item[1]
-    //     }    
-    //     const response = createOrderLine(orderline);
-    //     console.log(response.data)
-
-    //   });
-      
-    // };
 
    
     useEffect (() => {
@@ -91,7 +72,6 @@ const Order = () =>{
                 <div>
                     
                     <div>
-                        {/* <form className='formContainer' onSubmit={submit}> */}
                         <form className='formContainer'>
                             <h2 className="user-form-label">Delivery data</h2>
 
@@ -121,13 +101,9 @@ const Order = () =>{
                         <div className='orderList'>
                             {products.map((product) => cartItems[product.id] ? <OrderItem key={product.id} data={product} /> : null)}
                         </div>
-                        <div className='totalPrice'>{totalPrice} -,E </div>  
-                        {/* save Orderline ------toto musis dokoncit -- pridat do Backendu orderline postovanie*/}
-                        {/* <Button variant="success" className="buy-button" onClick={() => saveOrderlines()}>save Orderlines</Button> */}
-                   
+                        <div className='totalPrice'>{totalPrice} -,E </div>           
                     </div>
                     <div className='formContainer'>
-                        {/* <Button variant="success" className="continue-button" onClick={() => navigate(`/order`)}>Continue</Button> */}
                         <Button variant="success" className="buy-button" onClick={() => makeOrder()}>complete the purchase - BUY</Button>
                     </div>
                

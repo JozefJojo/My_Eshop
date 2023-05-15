@@ -27,8 +27,6 @@ public class OrderEntity {
     private String phoneNumber;
     private String role;
 
-
-
     @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL)
     private List<Orderline> orderlines;
 

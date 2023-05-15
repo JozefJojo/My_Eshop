@@ -35,13 +35,6 @@ public class OrderController {
 //    zvysok mozes dat generovat v triede Order napriklad cas kedy vznikla order, status ze je created
 //    a taktiez na vytvorenie User mozes pouzit DTO  , potrebujes vediet iba zakladne udaje , zvysok das
 //    vygenerovat v User.class  (vygenerovat nechas id, user rolu)
-
-
-
-    /**
-     * teraz to funguje popici :D
-     */
-
     @PostMapping("/createOrderWithUser")
     public ResponseEntity<OrderEntity> createOrder(@RequestBody OrderEntity orderEntity) {
         List<Orderline> orderlines = orderEntity.getOrderlines();
