@@ -9,6 +9,12 @@ export const ShopContextProvider = (props) => {
 
     const [products, setProducts] = useState([])
    
+
+    const resetContext = () => {
+      setCartItems({});
+    };
+
+
     
     useEffect (() => {
         const getProductsAsync = async () => {
@@ -63,7 +69,7 @@ export const ShopContextProvider = (props) => {
     };
 
 
-    const contextValue = { cartItems , addToCart , removeFromCart, getTotalCartPrice, getTotalCartAmount };
+    const contextValue = { cartItems , addToCart , removeFromCart, getTotalCartPrice, getTotalCartAmount, resetContext };
       
     return (
     <ShopContext.Provider value = {contextValue}>

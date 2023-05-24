@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
 import Order from './pages/Order';
+import Thanks from './pages/Thanks';
 import { ShopContextProvider } from './context/shop-context';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="products/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/order" element={<Order />} />
+                <Route path="/Thanks" element={<Thanks />} />             
               </Routes>
           </ShopContextProvider>
 

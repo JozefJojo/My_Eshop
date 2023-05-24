@@ -38,6 +38,11 @@
   }
 
 
+  .wider-button {
+    width: 300px; /* Prispôsobte šírku tlačidla podľa potreby */
+  }
+
+
 
   
   .continue-button {
