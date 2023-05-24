@@ -11,11 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")   //povolujem vsetky requesty , v buducnosti dovolit len z mojej stranky  (pozri si aj websokety)
 @RequestMapping("/orders")
 public class OrderController {
 
@@ -31,12 +33,18 @@ public class OrderController {
 //        return orderSercice.findProductById(id);
 //    }
 
-//bolo by lepsie pouzit DTO a to z dovodu ze ako Order staci vediet usera ktory si to objednava
-//    zvysok mozes dat generovat v triede Order napriklad cas kedy vznikla order, status ze je created
-//    a taktiez na vytvorenie User mozes pouzit DTO  , potrebujes vediet iba zakladne udaje , zvysok das
-//    vygenerovat v User.class  (vygenerovat nechas id, user rolu)
+//bolo by lepsie pouzit DTO
     @PostMapping("/createOrderWithUser")
     public ResponseEntity<OrderEntity> createOrder(@RequestBody OrderEntity orderEntity) {
+
+        LocalDateTime timeNow = LocalDateTime.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+        String timeOfCreationOrder = timeNow.format(timeFormatter);
+
+
+        orderEntity.setStatus("CREATED");
+        orderEntity.setCreated(String.valueOf(timeOfCreationOrder));
+        orderEntity.setRole("user");
         List<Orderline> orderlines = orderEntity.getOrderlines();
         for (Orderline orderline : orderlines) {
             orderline.setOrderEntity(orderEntity);
