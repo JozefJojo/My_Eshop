@@ -5,12 +5,14 @@ import { OrderItem } from './cart/order-item';
 import './cart/order.css';
 import Button from 'react-bootstrap/Button';
 import { createOrder } from '../services/OrderService';
+import { useNavigate } from 'react-router-dom';
 
 const Order = () =>{
 
     const [products, setProducts] = useState([])
     const {cartItems,getTotalCartPrice} = useContext(ShopContext);
     const totalPrice = getTotalCartPrice();
+    const navigate = useNavigate();
 
     const [user, setUser] = useState({
         name: "",
@@ -39,19 +41,22 @@ const Order = () =>{
         }));
 
         const order  = {
-            created: new Date().toISOString().slice(0, 19).replace("T", " "),
-            status: "CREATED",
             name: user.name,
             email: user.email,
             city: user.city,
             postalCode: user.postalCode,
             address: user.address,
             phoneNumber: user.phoneNumber,
-            role: "user-admin",
             orderlines
         }
 
         const response = await createOrder(order)
+        
+        if (response.success) {
+            navigate('/Thanks');
+          } else {
+            console.log("Error - Order was not created");
+          }
       }
 
    
@@ -104,10 +109,8 @@ const Order = () =>{
                         <div className='totalPrice'>{totalPrice} -,E </div>           
                     </div>
                     <div className='formContainer'>
-                        <Button variant="success" className="buy-button" onClick={() => makeOrder()}>complete the purchase - BUY</Button>
+                        <Button variant="primary" className="buy-button  wider-button" onClick={() => makeOrder()}>BUY</Button>
                     </div>
-               
-
                 </div>
                     
         </div>
