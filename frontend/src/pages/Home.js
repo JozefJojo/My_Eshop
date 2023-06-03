@@ -48,13 +48,13 @@ const Home = () =>{
                     <div className='card' >
                         <div  onClick={() => navigate(`/products/${product.id}`)}>
                             <div className='card_img'>
-                                <img src={product.thumbnail}  style={{width: "150px", height: "150px"}}/>
+                                <img src={product.thumbnail}  style={{width: "150px", height: "150px"}} alt={product.name}/>
                             </div>
                             <div className='card_body' >
                                 <h2>{displayTitle(product)}</h2>
                                 <p>{displayText(product)}</p>
                                 <div className='price_section'>
-                                    <div className='price'>
+                                    <div className='price'> 
                                         <h3>{product.price} ,- EUR</h3>
                                     </div>
                                 </div>

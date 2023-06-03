@@ -13,7 +13,7 @@ export const CartItem = (props) => {
     return(
         <div className='cartItem'>
             <div className='cartPictureAndTittle'>
-                <img src={thumbnail} alt="image of product" onClick={() => navigate(`/products/${id}`)} />
+                <img src={thumbnail} alt="" onClick={() => navigate(`/products/${id}`)} />
                 <p style={{ fontSize: '18px', fontWeight: 'bold' }} >
                     <b>{title.substring(0, 15)}</b>
                 </p>

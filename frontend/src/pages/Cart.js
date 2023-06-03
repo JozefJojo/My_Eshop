@@ -47,8 +47,10 @@ const Cart = () =>{
 
             <div>
                 {products.map((product) => {
-                    if(cartItems[product.id]){
+                    if (cartItems[product.id]) {
                         return <CartItem key={product.id} data={product} />;
+                    } else {
+                        return null;
                     }
                 })}
             </div>
