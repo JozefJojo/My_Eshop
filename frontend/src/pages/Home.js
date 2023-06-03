@@ -45,7 +45,7 @@ const Home = () =>{
                     <div className='card' >
                         <div  onClick={() => navigate(`/products/${product.id}`)}>
                             <div className='card_img'>
-                                <img src={product.thumbnail}  style={{width: "150px", height: "150px"}} alt={product.name}/>
+                                <img src={product.thumbnail}  className="thumbnail-image" alt={product.name}/>
                             </div>
                             <div className='card_body' >
                                 <h2>{displayTitle(product)}</h2>
