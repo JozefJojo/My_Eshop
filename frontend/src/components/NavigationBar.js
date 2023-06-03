@@ -17,7 +17,7 @@ const NavigationBar = () => {
 
   return (
         <header className='navigation-bar'>
-          <Link to="/" style={{ fontSize: '30px', fontWeight: 'bold'  }}>My e-shop</Link>
+          <Link to="/"  className="my-eshop-link">My e-shop</Link>
     
           <Button  onClick={openCart}  className={`custom-button rounded-circle`}   variant="outline-light">
             <svg

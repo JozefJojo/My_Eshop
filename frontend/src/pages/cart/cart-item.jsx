@@ -21,9 +21,7 @@ export const CartItem = (props) => {
              <div className="d-flex align-items-center flex-column" style={{ gap: ".5rem" }} >
                 <div className="d-flex align-items-center justify-content-center" style={{ gap: ".5rem" }}>
                     <Button variant="secondary" onClick={() => removeFromCart(id)}>-</Button>
-                    <div>
-                    <span className="fs-3">{cartItemAmout}</span> in cart
-                    </div>
+                    <div><span className="fs-3">{cartItemAmout}</span> in cart</div>
                     <Button variant="secondary"  onClick={() => addToCart(id)}>+</Button>
                     <p style={{ paddingLeft: '20px', paddingRight: '20px',marginBottom:'0' }}>{price} ,- EUR</p>
                 </div>

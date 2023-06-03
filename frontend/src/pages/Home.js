@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import ProductService from '../services/ProductService';
 import { ShopContext } from '../context/shop-context';
+import "./home.css";
 
 const Home = () =>{
 
@@ -16,10 +17,6 @@ const Home = () =>{
         }
         getProductsAsync()
     },[])
-
-
-  
-
 
     const displayText = (product) => {
         if (product) {
@@ -54,9 +51,7 @@ const Home = () =>{
                                 <h2>{displayTitle(product)}</h2>
                                 <p>{displayText(product)}</p>
                                 <div className='price_section'>
-                                    <div className='price'> 
-                                        <h3>{product.price} ,- EUR</h3>
-                                    </div>
+                                    <h3>{product.price} ,- EUR</h3>
                                 </div>
                             </div>
                         </div>

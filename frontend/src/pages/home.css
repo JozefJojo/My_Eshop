@@ -1,0 +1,52 @@
+.card_img {
+    margin: 0;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+
+  .cta_group{
+    margin: auto;
+  }
+
+  .product_list_container{
+    display: block;
+    width: 100%;
+    margin:50px auto;
+    @media(max-width:80%){
+      padding:50px 0 0 0;
+    }
+    @media(max-width:768px){
+      padding:50px 20px 0 20px;
+    }
+  }
+
+  .mb_80 {
+    margin-bottom: 30px;
+  }
+
+
+  .button_act{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    border: 2px solid blue;
+    border-radius: 20px;
+    margin:20px 0;
+    text-transform:uppercase;
+    font-size: 14px;
+    color: blue;
+    font-weight: bold;
+    transition:all .3s ease-in-out;
+  }
+
+  .row :hover{
+    border-color: blue;
+    color:blue;
+   }
+   
+   .row :hover .button_act {
+     background-color:blue;
+     color:white
+   }
