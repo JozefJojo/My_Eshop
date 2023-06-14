@@ -5,7 +5,7 @@ import {CartItem}  from './cart/cart-item';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { OrderItem } from './cart/order-item'; 
-import "./cart/cart.css";
+import "../styles/cart.css";
 
 const Cart = () =>{
 

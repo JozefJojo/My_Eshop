@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import { Button} from "react-bootstrap"
 import { useNavigate, Link } from "react-router-dom";
 import { ShopContext } from '../context/shop-context';
-import "./navigation.css";
+import "../styles/navigation.css";
 
 const NavigationBar = () => {
 

@@ -2,14 +2,11 @@ import React, {useContext, useEffect, useState } from 'react';
 import ProductService from '../services/ProductService';
 import { ShopContext } from '../context/shop-context';
 import { OrderItem } from './cart/order-item';  
-import './cart/order.css';
-import Button from 'react-bootstrap/Button';
 import { createOrder } from '../services/OrderService';
 import { useNavigate } from 'react-router-dom';
-
-//validacia formularu
-import '../formValidation.css'
 import FormInput from '../components/FormInput';
+import '../styles/order.css';
+import '../styles/formValidation.css'
 
 
 const Order = () =>{
@@ -18,7 +15,7 @@ const Order = () =>{
     const {cartItems,getTotalCartPrice} = useContext(ShopContext);
     const totalPrice = getTotalCartPrice();
     const navigate = useNavigate();
-
+    const { resetContext } = React.useContext(ShopContext);
 
     const [userInfo, setUserInfo] = useState({
         name: "",
@@ -74,7 +71,7 @@ const Order = () =>{
             errorMessage:"City should be 3-16 characters!",
             example:"Example: Bratislava",
             label: "City",
-            pattern: "^[A-Za-z]{3,16}$",
+            pattern: "^[A-Za-z ]{2,16}$",
             required: true,
         },
         {
@@ -90,7 +87,7 @@ const Order = () =>{
         },
         {
             id: 6,
-            name: "adress",
+            name: "address",
             type: "text",
             placeholder: "Adress",
             errorMessage: "Passwords don't match!",
@@ -141,6 +138,7 @@ const Order = () =>{
     const response = await createOrder(order)
     
     if (response.success) {
+        resetContext(); 
         navigate('/Thanks');
         } else {
         console.log("Error - Order was not created");
@@ -159,53 +157,41 @@ const Order = () =>{
 
     return (
         <div>
+            
             <div>
                 <h1>Purchase</h1>
             </div>
+
+            <div>  
                 <div>
-                    
-                    <div>
-                        <form onSubmit={handleSubmit} >
-                            {inputs.map((input) => (
-                            <FormInput
-                                key={input.id}
-                                {...input}
-                                value={userInfo[input.name]}
-                                onChange={onChange}
-                            />
-                            ))}
-                            
-                            <div className='formContainer'>
-                                <h2 className="user-form-label">Items in the cart</h2>
-
-                                <div className='orderList'>
-                                    {products.map((product) => cartItems[product.id] ? <OrderItem key={product.id} data={product} /> : null)}
-                                </div>
-                                <div className='totalPrice'>{totalPrice} -,E </div>           
-                                    </div>
-                                <div className='formContainer'>
-                                    <button >BUY</button>
-                                    {/* <Button variant="primary" className="buy-button  wider-button" onClick={() => handleSubmit()}>BUY</Button> */}
-                                </div>
-
-                        </form>
-                    </div>
-
-                    {/* <div className='formContainer'>
-                        <h2 className="user-form-label">Items in the cart</h2>
-
-                        <div className='orderList'>
-                            {products.map((product) => cartItems[product.id] ? <OrderItem key={product.id} data={product} /> : null)}
+                    <form onSubmit={handleSubmit} >
+                        {inputs.map((input) => (
+                        <FormInput
+                            key={input.id}
+                            {...input}
+                            value={userInfo[input.name]}
+                            onChange={onChange}
+                        />
+                        ))}
+                        
+                        <div className='formContainer'>
+                            <h2 className="user-form-label">Items in the cart</h2>
+                            <div className='orderList'>
+                                {products.map((product) => cartItems[product.id] ? <OrderItem key={product.id} data={product} /> : null)}
+                            </div>
+                            <div className='totalPrice'>
+                                {totalPrice} -,E 
+                            </div>           
                         </div>
-                        <div className='totalPrice'>{totalPrice} -,E </div>           
-                    </div>
-                    <div className='formContainer'>
-                        <Button variant="primary" className="buy-button  wider-button" onClick={() => makeOrder()}>BUY</Button>
-                    </div> */}
+
+                        <div className='formContainer'>
+                            <button class="btn btn-primary size-btn" >BUY</button>
+                        </div>
+                    </form>
                 </div>
-                    
+            </div>
         </div>
-        )
+    )
 }
 
 export default Order

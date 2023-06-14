@@ -2,6 +2,7 @@ import React, {useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import { ShopContext } from '../../context/shop-context';
 import { useNavigate } from 'react-router-dom'
+import "../../styles/cart.css";
 
 
 export const CartItem = (props) => {
