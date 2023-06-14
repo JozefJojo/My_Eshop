@@ -1,6 +1,6 @@
 import React, {useContext } from 'react';
 import { ShopContext } from '../../context/shop-context';
-import './order.css';
+import "../../styles/order.css";
 
 export const OrderItem = (props) => {
     const {id,title,price} = props.data;

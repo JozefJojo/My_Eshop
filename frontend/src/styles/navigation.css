@@ -1,0 +1,36 @@
+.custom-button {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    left: 90%;
+  }
+
+
+  .custom-badge {
+    background-color: #dc3545;
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(25%, 25%);
+  }
+ 
+
+  .navigation-bar {
+    display: flex;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+  }
+
+  .navigation-bar a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .my-eshop-link {
+    font-size: 30px;
+    font-weight: bold;
+  }
