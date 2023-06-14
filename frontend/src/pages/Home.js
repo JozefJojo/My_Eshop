@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import ProductService from '../services/ProductService';
 import { ShopContext } from '../context/shop-context';
+import "../styles/home.css";
 
 const Home = () =>{
 
@@ -16,10 +17,6 @@ const Home = () =>{
         }
         getProductsAsync()
     },[])
-
-
-  
-
 
     const displayText = (product) => {
         if (product) {
@@ -48,15 +45,13 @@ const Home = () =>{
                     <div className='card' >
                         <div  onClick={() => navigate(`/products/${product.id}`)}>
                             <div className='card_img'>
-                                <img src={product.thumbnail}  style={{width: "150px", height: "150px"}}/>
+                                <img src={product.thumbnail}  className="thumbnail-image" alt={product.name}/>
                             </div>
                             <div className='card_body' >
                                 <h2>{displayTitle(product)}</h2>
                                 <p>{displayText(product)}</p>
                                 <div className='price_section'>
-                                    <div className='price'>
-                                        <h3>{product.price} ,- EUR</h3>
-                                    </div>
+                                    <h3>{product.price} ,- EUR</h3>
                                 </div>
                             </div>
                         </div>

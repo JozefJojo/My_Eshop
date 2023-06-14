@@ -4,16 +4,13 @@ import ProductService from '../services/ProductService';
 
 export const ShopContext = createContext (null);
 
-
 export const ShopContextProvider = (props) => {
 
     const [products, setProducts] = useState([])
-   
-
+  
     const resetContext = () => {
       setCartItems({});
     };
-
 
     
     useEffect (() => {
@@ -70,7 +67,7 @@ export const ShopContextProvider = (props) => {
 
 
     const contextValue = { cartItems , addToCart , removeFromCart, getTotalCartPrice, getTotalCartAmount, resetContext };
-      
+
     return (
     <ShopContext.Provider value = {contextValue}>
         {props.children}

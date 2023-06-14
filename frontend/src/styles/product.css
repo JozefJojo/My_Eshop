@@ -1,0 +1,22 @@
+.wrapper{
+    margin: 150px auto;
+    width: 80%;
+  }
+
+  .product_img{
+    margin: 0;
+    padding: 2em;
+  }
+
+  .img_size{
+    width: 500px;
+    height: 500px;
+  }
+
+  /* pretoze mam to pouzite v span a nanho uz mam nastavnene pravidla  */
+  .product-price {
+    display: inline !important;
+    color: blue !important;
+    font-size:35px !important;
+  }
+  
